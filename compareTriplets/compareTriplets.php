@@ -1,10 +1,10 @@
 <?php
 function compareTriplets(array $a, array $b){
-	if(count($a) !== count($b)){
+    if(count($a) !== count($b)){
     	echo "wrong input";
         return;
     }
-	$index = 0;
+    $index = 0;
     return array_reduce($a, function($score, $item) use($b, &$index){
     	$score[0] += (int)($item > $b[$index]);
     	$score[1] += (int)($item < $b[$index]);
