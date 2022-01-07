@@ -11,7 +11,6 @@ function compareTriplets(array $a, array $b){
     	$index++;
     	return $score;
     });
-    print_r($output);
 }
 
 print_r(compareTriplets([1, 2, 3], [3, 2, 1]));
