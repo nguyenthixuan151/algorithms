@@ -5,11 +5,11 @@ function compareTriplets(array $a, array $b){
         return;
     }
     $index = 0;
-    return array_reduce($a, function($score, $item) use($b, &$index){
-    	$score[0] += (int)($item > $b[$index]);
-    	$score[1] += (int)($item < $b[$index]);
-    	$index++;
-    	return $score;
+    return array_reduce($a, function() use($a, $b, &$index, &$scoreA, &$scoreB){
+        $scoreA += (int)($a[$index] > $b[$index]);
+        $scoreB += (int)($a[$index] < $b[$index]);
+        $index++;
+        return [$scoreA, $scoreB];
     });
 }
 
