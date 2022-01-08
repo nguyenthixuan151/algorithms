@@ -1,16 +1,16 @@
 <?php
 function compareTriplets(array $a, array $b){
     if(count($a) !== count($b)){
-    	echo "wrong input";
+        echo "wrong input";
         return;
     }
-    $index = 0;
-    return array_reduce($a, function() use($a, $b, &$index, &$scoreA, &$scoreB){
-        $scoreA += (int)($a[$index] > $b[$index]);
-        $scoreB += (int)($a[$index] < $b[$index]);
-        $index++;
-        return [$scoreA, $scoreB];
+    $scoreA = $scoreB = 0;
+
+    array_walk($a, function($item, $index) use ($b, &$scoreA, &$scoreB){
+        $scoreA += (int)($item > $b[$index]);
+        $scoreB += (int)($item < $b[$index]);
     });
+    print_r([$scoreA, $scoreB]);
 }
 
 print_r(compareTriplets([1, 2, 3], [3, 2, 1]));
